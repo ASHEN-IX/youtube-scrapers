@@ -10,6 +10,8 @@ import random
 import os
 import yaml
 from pathlib import Path
+from flask import Flask
+import threading
 
 # Load settings
 with open("config/settings.yaml") as f:
@@ -65,5 +67,15 @@ def main():
     
     print("[+] All scripts executed. Check data/processed/merged.jsonl for results.")
 
+from flask import Flask
+import threading
+
+app = Flask(__name__)
+
+@app.route('/run', methods=['POST'])
+def run_scraper():
+    threading.Thread(target=main).start()
+    return {'status': 'running'}
+
 if __name__ == "__main__":
-    main()
+    app.run(host='0.0.0.0', port=5000)

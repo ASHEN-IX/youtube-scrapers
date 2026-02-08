@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    ports:
+      - "5678:5678"
+    environment:
+      - NODES_EXCLUDE=[]
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=user
+      - N8N_BASIC_AUTH_PASSWORD=password
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/vanitas/Desktop/youtube_scraper:/workspace
+    networks:
+      - n8n_network
+
+  scraper:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config
+    networks:
+      - n8n_network
+    depends_on:
+      - n8n
+
+volumes:
+  n8n_data:
+
+networks:
+  n8n_network:

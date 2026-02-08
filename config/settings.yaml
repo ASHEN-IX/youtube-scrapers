@@ -1,4 +1,5 @@
 scraping:
+  domain: "https://www.youtube.com"
   max_videos: 10
   query_fallback: "shorts"
   user_agents:
