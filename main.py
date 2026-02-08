@@ -34,7 +34,7 @@ def ensure_dirs():
 def run_script(script_name):
     print(f"[+] Running {script_name}...")
     try:
-        result = subprocess.run(["python", f"scripts/{script_name}"], check=True)
+        result = subprocess.run(["python3", f"scripts/{script_name}"], check=True)
         print(f"[+] {script_name} completed successfully")
     except subprocess.CalledProcessError as e:
         error_msg = f"Error in {script_name}: {e}"
@@ -50,8 +50,6 @@ def main():
     scripts = [
         "01_fetch_trending_shorts.py",
         "02_fetch_metadata.py",
-        "03_fetch_comments.py",
-        "04_fetch_captions.py",
         "05_clean_data.py",
         "06_merge_dataset.py"
     ]

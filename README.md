@@ -1,12 +1,12 @@
 # YouTube Shorts Scraper
 
-A Python project to scrape trending YouTube Shorts, collect metadata, comments, and captions, clean the data, and output an ML-ready dataset.
+A Python project to scrape trending YouTube Shorts, collect metadata, clean the data, and output an ML-ready dataset.
 
 ## Features
 
 - Scrapes trending YouTube Shorts automatically
-- Fetches video metadata, comments, and auto-generated captions
-- Cleans and filters English text data
+- Fetches video metadata
+- Cleans and filters data
 - Merges everything into a JSONL dataset for machine learning
 
 ## Requirements
@@ -30,9 +30,8 @@ python main.py
 This will run all scripts in order:
 1. Fetch trending Shorts IDs
 2. Fetch metadata
-3. Fetch comments
-4. Fetch captions
-5. Clean data
+3. Clean data
+4. Merge dataset
 6. Merge dataset
 
 ## Configuration
